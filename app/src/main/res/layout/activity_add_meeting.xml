@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.add.AddMeetingActivity"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/meetingSubjectET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="Sujet du meeting"
+        />
+
+    <TextView
+        android:id="@+id/dateTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="14dp"
+        android:textSize="18sp"
+        android:hint="Date"
+
+        />
+
+    <TextView
+        android:id="@+id/beginning_meeting_timeTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="14dp"
+        android:textSize="18sp"
+        android:hint="Heure de début"
+        />
+
+    <TextView
+        android:id="@+id/ending_meeting_timeTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="14dp"
+        android:textSize="18sp"
+        android:hint="Heure de fin"
+        />
+
+    <Spinner
+        android:id="@+id/roomSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        />
+
+
+    <Button
+        android:id="@+id/validateMeetingBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Creation meeting"
+        android:layout_margin="20dp"
+        />
+
+
+</LinearLayout>

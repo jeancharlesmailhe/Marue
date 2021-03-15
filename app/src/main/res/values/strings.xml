@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Ma reu</string>
+    <string name="select_time">Selectionner une date</string>
+    <string name="meeting_date">Date de la réunion: %d/%d/%d</string>
+    <string name="meeting_start_time">Début de la réunion: %dH%d</string>
+    <string name="meeting_end_time">Fin de la réunion: %dH%d</string>
+    <string name="meeting_title">%s-%s-%s</string>
+    <string-array name="meeting_room_list">
+        <item>Room A</item>
+        <item>Room B</item>
+        <item>Room C</item>
+        <item>Room D</item>
+    </string-array>
+</resources>
