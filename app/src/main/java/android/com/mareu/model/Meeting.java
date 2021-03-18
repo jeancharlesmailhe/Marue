@@ -6,51 +6,52 @@ import java.util.Objects;
 
 public class Meeting {
 
-
-
-    /** Room name */
+    /**
+     * Room name
+     */
     private String meetingRoom;
 
-    /** Meeting name */
+    /**
+     * Meeting name
+     */
     private String meetingName;
 
-    /** Date */
+    /**
+     * Date
+     */
     private String meetingDate;
 
-    /** Time */
+    /**
+     * Time
+     */
     private String meetingTime;
 
-    /** Duration */
+    /**
+     * Duration
+     */
     private String meetingEndingTime;
 
-    /** Participants emails*/
-    private List<String> meetingEmails;
-
-
-
-
-
+    /**
+     * Participants emails
+     */
+    private String meetingEmails;
 
     /**
      * Constructor
      */
 
-    public Meeting(String meetingRoom, String meetingName, String meetingDate, String meetingTime, String meetingEndingTime) {
-
+    public Meeting(String meetingRoom, String meetingName, String meetingDate, String meetingTime, String meetingEndingTime, String meetingEmails) {
         this.meetingRoom = meetingRoom;
         this.meetingName = meetingName;
         this.meetingDate = meetingDate;
         this.meetingTime = meetingTime;
         this.meetingEndingTime = meetingEndingTime;
         this.meetingEmails = meetingEmails;
-
     }
 
     /**
-     *Getters and Setters
+     * Getters and Setters
      */
-
-
 
     public String getMeetingRoom() {
         return meetingRoom;
@@ -61,7 +62,7 @@ public class Meeting {
     }
 
     public String getMeetingName() {
-    return meetingName;
+        return meetingName;
     }
 
     public void setMeetingName(String meetingName) {
@@ -92,13 +93,11 @@ public class Meeting {
         this.meetingEndingTime = meetingEndingTime;
     }
 
-    public List<String> getEmails() {
+    public String getMeetingEmails() {
         return meetingEmails;
     }
 
-    public void setEmails(List<String> meetingEmails) {
+    public void setMeetingEmails(String meetingEmails) {
         this.meetingEmails = meetingEmails;
     }
-
-
 }

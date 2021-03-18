@@ -1,64 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.add.AddMeetingActivity"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.add.AddMeetingActivity">
+
+    //meeting subject
 
     <EditText
         android:id="@+id/meetingSubjectET"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/selectionDateTV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:hint="Sujet du meeting"
+        />
+
+    // date picker
+    <TextView
+        android:id="@+id/selectionDateTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="14dp"
+        android:text="Date : "
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/meetingSubjectET"
+        app:layout_constraintStart_toStartOf="@id/meetingSubjectET"
+        app:layout_constraintEnd_toStartOf="@+id/dateTV"
+        app:layout_constraintBottom_toTopOf="@+id/selectionTimeTV"
         />
 
     <TextView
         android:id="@+id/dateTV"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="14dp"
+        android:hint="date meeting"
         android:textSize="18sp"
-        android:hint="Date"
+        android:textStyle="italic"
+        app:layout_constraintStart_toEndOf="@id/selectionDateTV"
+        app:layout_constraintTop_toTopOf="@id/selectionDateTV"
+        app:layout_constraintBottom_toBottomOf="@id/selectionDateTV"
+        />
 
+    // begin time picker
+
+    <TextView
+        android:id="@+id/selectionTimeTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Début réunion : "
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_margin="14dp"
+        app:layout_constraintStart_toStartOf="@id/meetingSubjectET"
+        app:layout_constraintTop_toBottomOf="@id/selectionDateTV"
+        app:layout_constraintEnd_toStartOf="@id/beginning_meeting_timeTV"
         />
 
     <TextView
         android:id="@+id/beginning_meeting_timeTV"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="14dp"
+        android:hint="heure début"
         android:textSize="18sp"
-        android:hint="Heure de début"
+        app:layout_constraintStart_toEndOf="@id/selectionTimeTV"
+        app:layout_constraintTop_toTopOf="@id/selectionTimeTV"
+        app:layout_constraintBottom_toBottomOf="@id/selectionTimeTV"
+        />
+
+    // end time picker
+    <TextView
+        android:id="@+id/selectionEndTimeTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Début réunion : "
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_margin="14dp"
+        app:layout_constraintStart_toStartOf="@id/meetingSubjectET"
+        app:layout_constraintTop_toBottomOf="@id/selectionTimeTV"
+        app:layout_constraintEnd_toStartOf="@id/ending_meeting_timeTV"
         />
 
     <TextView
         android:id="@+id/ending_meeting_timeTV"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="14dp"
+        android:hint="heure de fin"
         android:textSize="18sp"
-        android:hint="Heure de fin"
+        app:layout_constraintStart_toEndOf="@id/selectionTimeTV"
+        app:layout_constraintTop_toTopOf="@id/selectionEndTimeTV"
+        app:layout_constraintBottom_toBottomOf="@id/selectionEndTimeTV"
         />
 
+    // room selection spinner
     <Spinner
         android:id="@+id/roomSpinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="14dp"
+        app:layout_constraintStart_toStartOf="@id/meetingSubjectET"
+        app:layout_constraintTop_toBottomOf="@id/selectionEndTimeTV"
+        app:layout_constraintBottom_toTopOf="@id/addEmailET"
+
         />
 
+    // emails participants
 
-    <Button
-        android:id="@+id/validateMeetingBtn"
+    <EditText
+        android:id="@+id/addEmailET"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/addEmailImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/roomSpinner"
+        app:layout_constraintBottom_toTopOf="@id/listViewEmail"
+        android:inputType="textEmailAddress"
+        />
+
+    <ImageView
+        android:id="@+id/addEmailImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Creation meeting"
-        android:layout_margin="20dp"
+        android:src="@drawable/email_add_vec"
+        app:layout_constraintStart_toEndOf="@id/addEmailET"
+        app:layout_constraintTop_toTopOf="@id/addEmailET"
+        app:layout_constraintBottom_toBottomOf="@id/addEmailET"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/listViewEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        app:layout_constraintTop_toBottomOf="@id/addEmailImage"
+        app:layout_constraintStart_toStartOf="@id/meetingSubjectET"
+        app:layout_constraintBottom_toTopOf="@id/validateMeetingBtn"
         />
 
 
-</LinearLayout>
+    // button validation
+    <Button
+        android:id="@+id/validateMeetingBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="20dp"
+        android:text="Creation meeting"
+        app:layout_constraintStart_toStartOf="@id/meetingSubjectET"
+        app:layout_constraintTop_toBottomOf="@id/listViewEmail"
+        />
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

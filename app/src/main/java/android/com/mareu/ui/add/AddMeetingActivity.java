@@ -14,9 +14,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,14 +31,9 @@ public class AddMeetingActivity extends AppCompatActivity {
     TextView timeStart;
     TextView timeEnd;
     EditText mMeetingSubjectET;
+    EditText mParticipantET;
     DatePickerDialog mDatePickerDialog;
     Spinner mSpinner;
-    private ArrayList<Meeting> meeting;
-    private ArrayList<String> mParticipants;
-    private MeetingApiService mApiService = Di.getMeetingApiService();
-
-
-
 
     // meeting Variable for creation
     String meetingRoom;
@@ -44,20 +41,49 @@ public class AddMeetingActivity extends AppCompatActivity {
     String meetingDate;
     String meetingBeginningTime;
     String meetingEndingTime;
-
-    // List meetingEmails;
+    ArrayList<Meeting> meeting;
+    String mParticipants;
+    ArrayAdapter<String> arrayAdapter;
+    private final MeetingApiService mApiService = Di.getMeetingApiService();
+    private TextView listOfParticipantTV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_meeting);
-        mMeetingSubjectET = (EditText) findViewById(R.id.meetingSubjectET);
-        meetingName = mMeetingSubjectET.toString();
+
+        // email participant
+        mParticipantET = findViewById(R.id.addEmailET);
+        ImageView mAddEmailBtn = findViewById(R.id.addEmailImage);
+        listOfParticipantTV = findViewById(R.id.listViewEmail);
+
+        mAddEmailBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(AddMeetingActivity.this, "hello", Toast.LENGTH_SHORT).show();
+                String emailOfParticipant = mParticipantET.getText().toString().trim();
+                if (emailOfParticipant.isEmpty()) {
+                    return;
+                }
+
+                String emails = listOfParticipantTV.getText().toString();
+                emails = emails + "; " + emailOfParticipant;
+                listOfParticipantTV.setText(emails);
+                mParticipants = emails;
+                mParticipantET.setText("");
+            }
+        });
 
 
-        // initiate the date picker and a button
+        // Meeting Room selection
+        mSpinner = findViewById(R.id.roomSpinner);
+        List<String> roomList = Arrays.asList(getResources().getStringArray(R.array.meeting_room_list));
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, roomList);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mSpinner.setAdapter(adapter);
+
+        // Date picker Meeting
         date = (TextView) findViewById(R.id.dateTV);
-        // perform click event on TextView
         date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,63 +93,90 @@ public class AddMeetingActivity extends AppCompatActivity {
                 int mMonth = c.get(Calendar.MONTH); // current month
                 int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
                 // date picker dialog
-                mDatePickerDialog = new DatePickerDialog(AddMeetingActivity.this,
+                DatePickerDialog datePickerDialog = new DatePickerDialog(AddMeetingActivity.this,
                         new DatePickerDialog.OnDateSetListener() {
 
                             @Override
                             public void onDateSet(DatePicker view, int year,
                                                   int monthOfYear, int dayOfMonth) {
                                 // set day of month , month and year value in the edit text
-                                date.setText(getString(R.string.meeting_date, dayOfMonth, monthOfYear+1, year));
+                                date.setText(dayOfMonth + "/"
+                                        + (monthOfYear + 1) + "/" + year);
+
                             }
                         }, mYear, mMonth, mDay);
-                meetingDate = toString();
-                mDatePickerDialog.show();
+                datePickerDialog.show();
             }
         });
 
+
+        // Starting Time of Meeting
         timeStart = (TextView) findViewById(R.id.beginning_meeting_timeTV);
-        timeStart.setOnClickListener(v -> {
-            Calendar mCurrentTime = Calendar.getInstance();
-            int hour = mCurrentTime.get(Calendar.HOUR_OF_DAY);
-            int minute = mCurrentTime.get(Calendar.MINUTE);
-            TimePickerDialog mTimePicker;
-            mTimePicker = new TimePickerDialog(AddMeetingActivity.this, (timePicker, selectedHour, selectedMinute) -> timeStart.setText(getString(R.string.meeting_start_time,selectedHour, selectedMinute)), hour, minute, true);//Yes 24 hour time
-            mTimePicker.setTitle(getString(R.string.select_time));
-            mTimePicker.show();
-
+        timeStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar mCurrentTime = Calendar.getInstance();
+                int hour = mCurrentTime.get(Calendar.HOUR_OF_DAY);
+                int minute = mCurrentTime.get(Calendar.MINUTE);
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(AddMeetingActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        timeStart.setText(selectedHour + ":" + selectedMinute);
+                    }
+                }, hour, minute, true);//Yes 24 hour time
+                mTimePicker.setTitle("Selection heure");
+                mTimePicker.show();
+            }
         });
+
+        // Ending Time Meeting
         timeEnd = (TextView) findViewById(R.id.ending_meeting_timeTV);
-        timeEnd.setOnClickListener(v -> {
-            Calendar mCurrentTime = Calendar.getInstance();
-            int hour = mCurrentTime.get(Calendar.HOUR_OF_DAY);
-            int minute = mCurrentTime.get(Calendar.MINUTE);
-            TimePickerDialog mTimePicker;
-            mTimePicker = new TimePickerDialog(AddMeetingActivity.this, (timePicker, selectedHour, selectedMinute) -> timeEnd.setText(getString(R.string.meeting_end_time, selectedHour, selectedMinute)), hour, minute, true);//Yes 24 hour time
-            mTimePicker.setTitle(getString(R.string.select_time));
-            mTimePicker.show();
-
+        timeEnd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar mCurrentTime = Calendar.getInstance();
+                int hour = mCurrentTime.get(Calendar.HOUR_OF_DAY);
+                int minute = mCurrentTime.get(Calendar.MINUTE);
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(AddMeetingActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        timeEnd.setText(selectedHour + ":" + selectedMinute);
+                    }
+                }, hour, minute, true);//Yes 24 hour time
+                mTimePicker.setTitle("Selection heure");
+                mTimePicker.show();
+            }
         });
-        mSpinner = findViewById(R.id.roomSpinner);
-        List<String> roomList = Arrays.asList(getResources().getStringArray(R.array.meeting_room_list));
 
-        meetingRoom = mSpinner.toString();
-
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, roomList);
-
-
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mSpinner.setAdapter(adapter);
-
+        // Meeting Add Button
         Button mButtonAddMeeting;
         mButtonAddMeeting = findViewById(R.id.validateMeetingBtn);
+        mButtonAddMeeting.setOnClickListener(view4 -> {
 
-        mButtonAddMeeting.setOnClickListener(v -> {
-            Meeting meeting = new Meeting(meetingRoom, meetingName, meetingDate, meetingBeginningTime, meetingEndingTime);
+            // Meeting Name subject
+            mMeetingSubjectET = (EditText) findViewById(R.id.meetingSubjectET);
+            meetingName = mMeetingSubjectET.getText().toString();
+
+            // Room to string
+            meetingRoom = mSpinner.getSelectedItem().toString();
+
+            // Date to String
+            meetingDate = date.getText().toString();
+
+            // Beginning time to String
+            meetingBeginningTime = timeStart.getText().toString();
+
+            // Ending time to String
+            meetingEndingTime = timeEnd.getText().toString();
+
+
+            Meeting meeting = new Meeting(meetingRoom, meetingName, meetingDate, meetingBeginningTime, meetingEndingTime, mParticipants);
             mApiService.addMeeting(meeting);
             finish();
         });
+
+
     }
 }

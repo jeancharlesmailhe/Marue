@@ -5,6 +5,8 @@
     <string name="meeting_start_time">Début de la réunion: %dH%d</string>
     <string name="meeting_end_time">Fin de la réunion: %dH%d</string>
     <string name="meeting_title">%s-%s-%s</string>
+    <string name="entrer_date">entrer date</string>
+    <string name="selection_date">Selection Date :</string>
     <string-array name="meeting_room_list">
         <item>Room A</item>
         <item>Room B</item>

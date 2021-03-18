@@ -7,10 +7,10 @@ import java.util.List;
 
 public class MeetingRepository implements MeetingApiService{
     private List<Meeting> meetings = new ArrayList<>();
-    Meeting meetingTest = new Meeting("rooma", "name", "16/05", "15h", "16h");
+
 
     public MeetingRepository() {
-       this.addMeeting(meetingTest);
+
     }
 
 

@@ -36,6 +36,13 @@ public class ListMeetingActivity extends AppCompatActivity {
         meetingAdapter.update(l);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        List<Meeting> l = repository.getMeetings();
+        meetingAdapter.update(l);
+    }
+
     void initView() {
         FloatingActionButton mAddMeetingBtn = findViewById(R.id.meeting_add_button);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.meeting_recyclerView);
