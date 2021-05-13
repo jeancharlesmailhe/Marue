@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.details.DetailMeetingActivity">
+
+
+    <TextView
+        android:id="@+id/title_details_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="14dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="blablabla" />
+
+    <TextView
+        android:id="@+id/date_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="14dp"
+        android:text="Date : "
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_details_tv"
+        />
+
+    <TextView
+        android:id="@+id/date_details_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/date_tv"
+        app:layout_constraintTop_toTopOf="@id/date_tv"
+        tools:text="16/16/21" />
+
+    <TextView
+        android:id="@+id/beginning_time_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@id/date_tv"
+        app:layout_constraintTop_toBottomOf="@id/date_tv"
+        android:text="Heure de début : "/>
+
+    <TextView
+        android:id="@+id/beginning_time_details_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/beginning_time_tv"
+        app:layout_constraintTop_toTopOf="@id/beginning_time_tv"
+        tools:text="16H50" />
+
+    <TextView
+        android:id="@+id/ending_time_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@id/date_tv"
+        app:layout_constraintTop_toBottomOf="@id/beginning_time_tv"
+        android:text="Heure de fin : " />
+
+    <TextView
+        android:id="@+id/ending_time_details_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/ending_time_tv"
+        app:layout_constraintTop_toTopOf="@id/ending_time_tv"
+        tools:text="17H50" />
+
+    <TextView
+        android:id="@+id/room_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@id/date_tv"
+        app:layout_constraintTop_toBottomOf="@id/ending_time_tv"
+        android:text="Salle : " />
+
+    <TextView
+        android:id="@+id/room_details_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/room_tv"
+        app:layout_constraintTop_toTopOf="@id/room_tv"
+        tools:text="room A" />
+
+    <TextView
+        android:id="@+id/participants_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@id/date_tv"
+        app:layout_constraintTop_toBottomOf="@id/room_tv"
+        android:text="Emails : " />
+
+    <TextView
+        android:id="@+id/participants_details_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/participants_tv"
+        app:layout_constraintTop_toBottomOf="@id/room_tv"
+        tools:text="exemple@gmail.com " />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

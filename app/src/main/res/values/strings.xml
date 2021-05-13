@@ -7,10 +7,23 @@
     <string name="meeting_title">%s-%s-%s</string>
     <string name="entrer_date">entrer date</string>
     <string name="selection_date">Selection Date :</string>
+    <string name="rooms">Salles</string>
+    <string name="rooms_not_available">La salle de meeting n\'est pas disponible à ces horraires</string>
     <string-array name="meeting_room_list">
         <item>Room A</item>
         <item>Room B</item>
         <item>Room C</item>
         <item>Room D</item>
+        <item>Room E</item>
+        <item>Room F</item>
+        <item>Room G</item>
+        <item>Room H</item>
+        <item>Room I</item>
+        <item>Room J</item>
     </string-array>
+    <string name="menu_filter_by_date">Filtrer par date</string>
+    <string name="menu_filter_by_room">Filtrer par salle</string>
+    <string name="menu_filter_reset">Reinitialiser</string>
+    <string name="meeting_subject">Sujet du meeting</string>
+
 </resources>

@@ -5,6 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginStart="@dimen/add_activity_margin"
+    android:layout_marginEnd="@dimen/add_activity_margin"
     tools:context=".ui.list.ListMeetingActivity">
 
     <androidx.recyclerview.widget.RecyclerView
