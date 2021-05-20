@@ -25,5 +25,23 @@
     <string name="menu_filter_by_room">Filtrer par salle</string>
     <string name="menu_filter_reset">Reinitialiser</string>
     <string name="meeting_subject">Sujet du meeting</string>
+    <string name="date">Date :</string>
+    <string name="meeting_begin">Début réunion :</string>
+    <string name="beginning_time_hint">heure début</string>
+    <string name="beginning_time_hint_selection">heure début</string>
+    <string name="ending_time_textview">Fin réunion :</string>
+    <string name="ending_time_hint">heure de fin</string>
+    <string name="email_model">exemple@email.com</string>
+    <string name="creation_meeting">Creation meeting</string>
+    <string name="date_meeting">date meeting</string>
+    <string name="email_add">email_add</string>
+    <string name="date">Date :</string>
+    <string name="beginning_time_details">Heure de début :</string>
+    <string name="ending_time_details">Heure de fin :</string>
+    <string name="room_details">Salle :</string>
+    <string name="emails_textview">Emails :</string>
+    <string name="floating_btn">floating_btn</string>
+    <string name="meeting_img">meeting_img</string>
+    <string name="delete_btn">delete_btn</string>
 
 </resources>

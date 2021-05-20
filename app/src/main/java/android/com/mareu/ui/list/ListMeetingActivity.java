@@ -26,7 +26,7 @@ import java.util.Date;
 import java.util.List;
 
 public class ListMeetingActivity extends AppCompatActivity implements MeetingAdapter.OnMeetingClickListener {
-    private MeetingApiService repository = Di.getMeetingApiService();
+    private final MeetingApiService repository = Di.getMeetingApiService();
     private MeetingAdapter meetingAdapter;
 
     @Override

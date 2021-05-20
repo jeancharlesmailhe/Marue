@@ -1,7 +1,10 @@
 package android.com.mareu.utils;
+
 import android.os.IBinder;
 import android.view.WindowManager;
+
 import androidx.test.espresso.Root;
+
 import org.hamcrest.Description;
 import org.hamcrest.TypeSafeMatcher;
 
@@ -18,10 +21,9 @@ public class ToastMatcher extends TypeSafeMatcher<Root> {
         if (type == WindowManager.LayoutParams.TYPE_TOAST) {
             IBinder windowToken = root.getDecorView().getWindowToken();
             IBinder appToken = root.getDecorView().getApplicationWindowToken();
-            if (windowToken == appToken) {
-                return true;
-            }
+            return windowToken == appToken;
         }
         return false;
     }
 }
+

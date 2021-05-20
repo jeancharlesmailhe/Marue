@@ -1,19 +1,14 @@
 package android.com.mareu.ui.details;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.com.mareu.R;
 import android.com.mareu.model.Meeting;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
-
-import static java.lang.String.format;
 
 public class DetailMeetingActivity extends AppCompatActivity {
     TextView title, date, dateDetails, beginningTime, beginningTimeDetails, endingTime, endingTimeDetails, room, roomDetails, participants, participantsDetails;

@@ -3,7 +3,6 @@ package android.com.mareu.utils;
 import android.com.mareu.R;
 import android.view.View;
 
-
 import androidx.test.espresso.UiController;
 import androidx.test.espresso.ViewAction;
 
@@ -23,7 +22,7 @@ public class DeleteViewAction implements ViewAction {
 
     @Override
     public void perform(UiController uiController, View view) {
-        View button = view.findViewById(R.id.deleteBT);
+        View button = view.findViewById(R.id.delete_btn);
         // Maybe check for null
         button.performClick();
     }

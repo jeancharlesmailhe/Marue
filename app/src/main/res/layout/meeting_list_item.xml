@@ -1,82 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="8dp">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/textLayout"
-            app:tint="@color/black"
-            android:background="@drawable/ic_baseline_circle_24"
-            />
+    <ImageView
+        android:id="@+id/image_view"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/ic_baseline_circle_24"
+        android:contentDescription="@string/meeting_img"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/text_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/black" />
+
     <TextView
-        android:id="@+id/dateTV"
+        android:id="@+id/date_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/imageView"
-        app:layout_constraintTop_toTopOf="@id/imageView"
-        app:layout_constraintBottom_toBottomOf="@id/imageView"
-        app:layout_constraintEnd_toEndOf="@id/imageView"
-        android:textStyle="bold"
         android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/image_view"
+        app:layout_constraintEnd_toEndOf="@id/image_view"
+        app:layout_constraintStart_toStartOf="@id/image_view"
+        app:layout_constraintTop_toTopOf="@id/image_view" />
 
+    <LinearLayout
+        android:id="@+id/text_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@id/image_view"
+        app:layout_constraintEnd_toStartOf="@id/delete_btn"
+        app:layout_constraintStart_toEndOf="@id/image_view"
+        app:layout_constraintTop_toTopOf="@id/image_view"
+        tools:ignore="ExtraText">
+
+        <TextView
+            android:id="@+id/title_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="marquee"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:text="remipsoum" />
+
+        <TextView
+            android:id="@+id/emails_list_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="marquee"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            tools:text="email.com" />
         />
+    </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/textLayout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintStart_toEndOf="@id/imageView"
-            app:layout_constraintTop_toTopOf="@id/imageView"
-            app:layout_constraintEnd_toStartOf="@id/deleteBT"
-            app:layout_constraintBottom_toBottomOf="@id/imageView"
-            android:layout_marginStart="16dp"
-            >
-
-            <TextView
-                android:id="@+id/titleTV"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="remipsoum"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                android:ellipsize="marquee"
-                android:scrollHorizontally="true"
-                android:singleLine="true" />
-
-            <TextView
-                android:id="@+id/emailsTV"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="email.com"
-                android:ellipsize="marquee"
-                android:scrollHorizontally="true"
-                android:singleLine="true" />
-                />
-        </LinearLayout>
-
-
-        <ImageView
-            android:id="@+id/deleteBT"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_delete_24"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/imageView"
-            app:layout_constraintBottom_toBottomOf="@id/imageView"
-            app:layout_constraintStart_toEndOf="@id/textLayout"
-
-            />
+    <ImageView
+        android:id="@+id/delete_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/delete_btn"
+        android:src="@drawable/ic_baseline_delete_24"
+        app:layout_constraintBottom_toBottomOf="@id/image_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/text_layout"
+        app:layout_constraintTop_toTopOf="@id/image_view" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

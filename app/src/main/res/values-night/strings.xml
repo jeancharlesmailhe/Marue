@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="sujet_du_meeting">Sujet du meeting</string>
     <string name="beginning_time_hint_selection">heure début</string>
     <string name="ending_time_textview">Fin réunion :</string>
     <string name="email_model">exemple@email.com</string>

@@ -16,14 +16,13 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MeetingAdapter extends RecyclerView.Adapter<MeetingAdapter.ViewHolder> {
 
     private final MeetingApiService mApiService;
     private List<Meeting> mMeetings;
-    private OnMeetingClickListener onMeetingClickListener;
+    private final OnMeetingClickListener onMeetingClickListener;
 
     public MeetingAdapter(List<Meeting> meetings, OnMeetingClickListener listener) {
         mApiService = Di.getMeetingApiService();
@@ -114,13 +113,13 @@ public class MeetingAdapter extends RecyclerView.Adapter<MeetingAdapter.ViewHold
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            dateTV = itemView.findViewById(R.id.dateTV);
-            titleTV = itemView.findViewById(R.id.titleTV);
+            dateTV = itemView.findViewById(R.id.date_textview);
+            titleTV = itemView.findViewById(R.id.title_textview);
             titleTV.setSelected(true);
             titleTV.setHorizontallyScrolling(true);
-            emailTV = itemView.findViewById(R.id.emailsTV);
-            roomIMG = itemView.findViewById(R.id.imageView);
-            deleteIMG = itemView.findViewById(R.id.deleteBT);
+            emailTV = itemView.findViewById(R.id.emails_list_textview);
+            roomIMG = itemView.findViewById(R.id.image_view);
+            deleteIMG = itemView.findViewById(R.id.delete_btn);
             itemView.setOnClickListener(this);
         }
 
